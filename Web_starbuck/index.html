@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/>  
+ 
+
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+     crossorigin=""></script>
+     <script src="main.js"></script>
+     <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+</head>
+<body>
+     <div id="map">
+          <link rel="stylesheet" href="style.css">  
+     </div>
+     
+     <script>
+     var map = L.map('map').setView([10.828861044439156, 106.67047111516476], 8);
+     L.tileLayer('https://api.maptiler.com/maps/topo-v2/{z}/{x}/{y}.png?key=tJzZyi577rhl0qgkeERk', 
+     {
+          maxZoom: 19,
+          attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+     }).addTo(map);
+     </script>
+     <script>
+          var data =[
+     {
+          "type": "FeatureCollection",
+          "name": "starbuck_point",
+          "features": [
+          { "type": "Feature", "properties": { "gid": 25573, "brand": "Starbucks", "store numb": "48482-263452", "store name": "Phạm Ngọc Thạch", "streetadd": "2 Phạm Ngọc Thạch, Quận Đống Đa", "city": "Hà Nội", "state/prov": "HN", "postcode": "0", "phone numb": "04 3637 4374", "longitude": 105.83, "latitude": 21.01 }, "geometry": { "type": "Point", "coordinates": [ 105.83, 21.01 ] } },
+          { "type": "Feature", "properties": { "gid": 25574, "brand": "Starbucks", "store numb": "24015-232287", "store name": "Press Club", "streetadd": "59A Lý Thái Tổ, Quận Hoàn Kiếm, #123 Tầng trệt Tòa Nhà IPH Indochine Plaza Hà Nội", "city": "Hà Nội", "state/prov": "HN", "postcode": "70000", "phone numb": "04 3936 9017", "longitude": 105.86, "latitude": 21.03 }, "geometry": { "type": "Point", "coordinates": [ 105.86, 21.03 ] } },
+          { "type": "Feature", "properties": { "gid": 25575, "brand": "Starbucks", "store numb": "24016-230012", "store name": "IPH", "streetadd": "241 Xuân Thủy, Quận Cầu Giấy", "city": "Hà Nội", "state/prov": "HN", "postcode": "70000", "phone numb": "04 3795 4278", "longitude": 105.78, "latitude": 21.04 }, "geometry": { "type": "Point", "coordinates": [ 105.78, 21.04 ] } },
+          { "type": "Feature", "properties": { "gid": 25576, "brand": "Starbucks", "store numb": "47910-260386", "store name": "The Garden", "streetadd": "Tầng 1, TTTM The Garden, khu đô thị The Manor, Mễ Trì, Mỹ Đình", "city": "Hà Nội", "state/prov": "HN", "postcode": "70000", "phone numb": "04 3395 3333", "longitude": 105.78, "latitude": 21.01 }, "geometry": { "type": "Point", "coordinates": [ 105.78, 21.01 ] } },
+          { "type": "Feature", "properties": { "gid": 25577, "brand": "Starbucks", "store numb": "24003-228944", "store name": "Lan Viên", "streetadd": "32 Hàng Bài, Quận Hoàn Kiếm", "city": "Hà Nội", "state/prov": "HN", "postcode": "70000", "phone numb": "04 3936 8407", "longitude": 105.85, "latitude": 21.02 }, "geometry": { "type": "Point", "coordinates": [ 105.85, 21.02 ] } },
+          { "type": "Feature", "properties": { "gid": 25578, "brand": "Starbucks", "store numb": "24014-231244", "store name": "Bà Triệu", "streetadd": "314 Bà Triệu, Quận Hai Bà Trưng", "city": "Hà Nội", "state/prov": "HN", "postcode": "70000", "phone numb": "04 3978 1817", "longitude": 105.85, "latitude": 21.01 }, "geometry": { "type": "Point", "coordinates": [ 105.85, 21.01 ] } },
+          { "type": "Feature", "properties": { "gid": 25579, "brand": "Starbucks", "store numb": "49436-269127", "store name": "The Vista", "streetadd": "628 Xa Lo Ha Noi Highway, Dist 2, Ground Floor, The Oxygen Shopping Mall", "city": "Ho Chi Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 6281 4546", "longitude": 106.75, "latitude": 10.8 }, "geometry": { "type": "Point", "coordinates": [ 106.75, 10.8 ] } },
+          { "type": "Feature", "properties": { "gid": 25580, "brand": "Starbucks", "store numb": "49441-269128", "store name": "Ibis building", "streetadd": "2 Hong Ha st, Ward 2, Tan Binh Dist, Tầng trệt Tòa Nhà President Place", "city": "Ho Chi Minh", "state/prov": "SG", "postcode": "0", "phone numb": null, "longitude": 106.67, "latitude": 10.81 }, "geometry": { "type": "Point", "coordinates": [ 106.67, 10.81 ] } },
+          { "type": "Feature", "properties": { "gid": 25581, "brand": "Starbucks", "store numb": "18663-190626", "store name": "President Place", "streetadd": "93 Nguyễn Du, Quận 1, Tầng trệt Trung Tâm Thương Mại Pandora City", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3822 5891", "longitude": 106.7, "latitude": 10.78 }, "geometry": { "type": "Point", "coordinates": [ 106.7, 10.78 ] } },
+          { "type": "Feature", "properties": { "gid": 25582, "brand": "Starbucks", "store numb": "24011-230014", "store name": "Pandora", "streetadd": "1/1 Trường Chinh, Quận Tân Phú", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3812 6830", "longitude": 106.63, "latitude": 10.81 }, "geometry": { "type": "Point", "coordinates": [ 106.63, 10.81 ] } },
+          { "type": "Feature", "properties": { "gid": 25583, "brand": "Starbucks", "store numb": "23633-223885", "store name": "Đông Du", "streetadd": "38 Đông Du, Quận 1", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": null, "longitude": 106.7, "latitude": 10.78 }, "geometry": { "type": "Point", "coordinates": [ 106.7, 10.78 ] } },
+          { "type": "Feature", "properties": { "gid": 25584, "brand": "Starbucks", "store numb": "23925-226964", "store name": "Đề Thám", "streetadd": "191 - 193 Đề Thám, Quận 1", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3838 6455", "longitude": 106.69, "latitude": 10.77 }, "geometry": { "type": "Point", "coordinates": [ 106.69, 10.77 ] } },
+          { "type": "Feature", "properties": { "gid": 25585, "brand": "Starbucks", "store numb": "48282-262438", "store name": "Nguyễn Văn Trỗi", "streetadd": "66 Nguyễn Văn Trỗi, Quận Phú Nhuận, Tầng trệt, #01-28a,b Trung Tâm Thương Mại Vivo City", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "0", "phone numb": "08 3842 2171", "longitude": 106.68, "latitude": 10.79 }, "geometry": { "type": "Point", "coordinates": [ 106.68, 10.79 ] } },
+          { "type": "Feature", "properties": { "gid": 25586, "brand": "Starbucks", "store numb": "25378-234124", "store name": "VivoCity", "streetadd": "1058 Nguyễn Văn Linh, Quận 7", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3771 4975", "longitude": 106.7, "latitude": 10.73 }, "geometry": { "type": "Point", "coordinates": [ 106.7, 10.73 ] } },
+          { "type": "Feature", "properties": { "gid": 25587, "brand": "Starbucks", "store numb": "29695-254869", "store name": "Lakai", "streetadd": "98-126 Nguyễn Tri Phương, Quận 5", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3924 1251", "longitude": 106.67, "latitude": 10.75 }, "geometry": { "type": "Point", "coordinates": [ 106.67, 10.75 ] } },
+          { "type": "Feature", "properties": { "gid": 25588, "brand": "Starbucks", "store numb": "48731-264926", "store name": "Thành Phố Hồ Chí Minh", "streetadd": "Sân bay Tân Sơn Nhất, 45 Trường Sơn, Tân Bình, Phòng A2, tầng trệt, Khu vực thương mại Nhà giữ xe Ga Quốc Nội, Phòng 1A Tòa Nhà Kumho Asiana Plaza Saigon", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 6681 6463", "longitude": 106.66, "latitude": 10.81 }, "geometry": { "type": "Point", "coordinates": [ 106.66, 10.81 ] } },
+          { "type": "Feature", "properties": { "gid": 25589, "brand": "Starbucks", "store numb": "25865-242710", "store name": "Kumho", "streetadd": "39 Lê Duẩn, Quận 1", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3823 4990", "longitude": 106.7, "latitude": 10.78 }, "geometry": { "type": "Point", "coordinates": [ 106.7, 10.78 ] } },
+          { "type": "Feature", "properties": { "gid": 25590, "brand": "Starbucks", "store numb": "24009-223886", "store name": "Phan Xich Long", "streetadd": "214 -216 Phan Xích Long, Quận Phú Nhuận", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3517 6461", "longitude": 106.69, "latitude": 10.8 }, "geometry": { "type": "Point", "coordinates": [ 106.69, 10.8 ] } },
+          { "type": "Feature", "properties": { "gid": 25591, "brand": "Starbucks", "store numb": "25346-240592", "store name": "Thảo Điền", "streetadd": "21 Thảo Điền, Quận 2", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3744 2040", "longitude": 106.74, "latitude": 10.8 }, "geometry": { "type": "Point", "coordinates": [ 106.74, 10.8 ] } },
+          { "type": "Feature", "properties": { "gid": 25592, "brand": "Starbucks", "store numb": "29047-252265", "store name": "Nguyễn Huệ", "streetadd": "99 Nguyễn Huệ, Quận 1", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3821 0105", "longitude": 106.7, "latitude": 10.77 }, "geometry": { "type": "Point", "coordinates": [ 106.7, 10.77 ] } },
+          { "type": "Feature", "properties": { "gid": 25593, "brand": "Starbucks", "store numb": "27767-248666", "store name": "SSG", "streetadd": "561A Điện Biên Phủ, Quận Bình Thạnh, Khách sạn New World", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3512 0585", "longitude": 106.72, "latitude": 10.8 }, "geometry": { "type": "Point", "coordinates": [ 106.72, 10.8 ] } },
+          { "type": "Feature", "properties": { "gid": 25594, "brand": "Starbucks", "store numb": "18687-193924", "store name": "New World", "streetadd": "76 Lê Lai, Quận 1, Góc đường Phạm Hồng Thái và Nguyễn Thị Nghĩa.", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3823 7952", "longitude": 106.69, "latitude": 10.77 }, "geometry": { "type": "Point", "coordinates": [ 106.69, 10.77 ] } },
+          { "type": "Feature", "properties": { "gid": 25595, "brand": "Starbucks", "store numb": "27082-246744", "store name": "Emart", "streetadd": "168 Phan Văn Trị, Quận Gò Vấp, Khách sạn Rex", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3588 0146", "longitude": 106.69, "latitude": 10.82 }, "geometry": { "type": "Point", "coordinates": [ 106.69, 10.82 ] } },
+          { "type": "Feature", "properties": { "gid": 25596, "brand": "Starbucks", "store numb": "21401-212072", "store name": "Rex", "streetadd": "141 Nguyễn Huệ, Quận 1, Góc đường Pasteur và Lê Thánh Tôn", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 3824 4668", "longitude": 106.7, "latitude": 10.78 }, "geometry": { "type": "Point", "coordinates": [ 106.7, 10.78 ] } },
+          { "type": "Feature", "properties": { "gid": 25597, "brand": "Starbucks", "store numb": "24010-226985", "store name": "Panorama", "streetadd": "SN-44, Tòa Nhà Panorama, 208 Trần Văn Trà, Quận 7", "city": "Thành Phố Hồ Chí Minh", "state/prov": "SG", "postcode": "70000", "phone numb": "08 5413 8292", "longitude": 106.71, "latitude": 10.72 }, "geometry": { "type": "Point", "coordinates": [ 106.71, 10.72 ] } }
+          ]
+          }
+          ]
+          function createCustomIcon (feature, latlng) {
+  let myIcon = L.icon({
+    iconUrl: 'logo_starbuck.png',
+    
+    iconSize:     [100,100], // width and height of the image in pixels
+    shadowSize:   [35, 20], // width, height of optional shadow image
+    iconAnchor:   [12, 12], // point of the icon which will correspond to marker's location
+    shadowAnchor: [12, 6],  // anchor point of the shadow. should be offset
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+  })
+  return L.marker(latlng, { icon: myIcon })
+}
+
+// // create an options object that specifies which function will called on each feature
+let myLayerOptions = {
+  pointToLayer: createCustomIcon
+}
+
+// popup content
+
+var mylayer= L.geoJson(data,{
+     onEachFeature: function (feature, layer) {
+         layer.bindPopup(feature.properties.streetadd);
+     },
+     pointToLayer: createCustomIcon
+     })
+mylayer.addTo(map);
+// create the GeoJSON layer
+//L.geoJSON(data, myLayerOptions).addTo(map)
+     </script>
+     
+</body>
+</html>
