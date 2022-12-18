@@ -11,6 +11,8 @@
     crossorigin=""/>  
  <!-- gps location -->
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.css" />
+<!-- search -->
+     <link rel="stylesheet" href="leaflet-search.css" />
 </head>
 <body>
      <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
@@ -20,7 +22,9 @@
      <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
      <!-- gps location -->
      <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
-
+     <!-- search -->
+     <script src="leaflet-search-geocoder.js"></script>
+     <script src="leaflet-search.js"></script>
 
      <div id="map">
           <link rel="stylesheet" href="style.css">  
@@ -97,8 +101,33 @@ var mylayer= L.geoJson(data,{
 mylayer.addTo(map);
 // create the GeoJSON layer
 //L.geoJSON(data, myLayerOptions).addTo(map)
-L.control.locate().addTo(map);
 
+//GPS location
+L.control.locate().addTo(map);
+//searching bar
+var markersLayer = new L.LayerGroup();	//layer contain searched elements
+	
+	map.addLayer(markersLayer);
+
+	var controlSearch = new L.Control.Search({
+		position:'topright',		
+		layer: markersLayer,
+		initial: false,
+		zoom: 12,
+		marker: false
+	});
+
+	map.addControl( controlSearch );
+
+	////////////populate map with markers from sample data
+	for(i in data) {
+		var title = data[i].streetadd,	//value searched
+			loc = data[i].coordinates,		//position found
+			marker = new L.Marker(new L.latLng(loc), {title: title} );//se property searched
+		marker.bindPopup(title);
+		markersLayer.addLayer(marker);
+	}
+     
      </script>
      
 </body>
