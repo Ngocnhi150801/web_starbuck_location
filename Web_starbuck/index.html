@@ -9,15 +9,19 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
     crossorigin=""/>  
- 
-
-    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+ <!-- gps location -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.css" />
+</head>
+<body>
+     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
      integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
      crossorigin=""></script>
      <script src="main.js"></script>
      <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-</head>
-<body>
+     <!-- gps location -->
+     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+
+
      <div id="map">
           <link rel="stylesheet" href="style.css">  
      </div>
@@ -93,6 +97,8 @@ var mylayer= L.geoJson(data,{
 mylayer.addTo(map);
 // create the GeoJSON layer
 //L.geoJSON(data, myLayerOptions).addTo(map)
+L.control.locate().addTo(map);
+
      </script>
      
 </body>
