@@ -13,18 +13,22 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.css" />
 <!-- search -->
      <link rel="stylesheet" href="leaflet-search.css" />
+<!-- machine routing -->
+     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
 </head>
 <body>
      <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
      integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
      crossorigin=""></script>
-     <script src="main.js"></script>
+     <!-- <script src="main.js"></script> -->
      <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
      <!-- gps location -->
      <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
      <!-- search -->
      <script src="leaflet-search-geocoder.js"></script>
      <script src="leaflet-search.js"></script>
+     <!-- machine routing -->
+     <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 
      <div id="map">
           <link rel="stylesheet" href="style.css">  
@@ -127,14 +131,34 @@ var markersLayer = new L.LayerGroup();	//layer contain searched elements
 	map.addControl( controlSearch );
 
 	////////////populate map with markers from sample data
-	for(i in data) {
-		var title = data[i].streetadd,	//value searched
-			loc = data[i].coordinates,		//position found
-			marker = new L.Marker(new L.latLng(loc), {title: title} );//se property searched
-		marker.bindPopup(title);
-		markersLayer.addLayer(marker);
-	}
-     
+	//for(i in data) {
+	//	var title = data[i].streetadd,	//value searched
+	//		loc = data[i].coordinates,		//position found
+	//		marker = new L.Marker(new L.latLng(loc), {title: title} );//se property searched
+	//	marker.bindPopup(title);
+	//	markersLayer.addLayer(marker);
+	//}
+ //machine routing
+ map.on('click', function (e) {
+     console.log(e)
+     var newMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+     L.Routing.control({
+         waypoints: [
+             L.latLng(10.76719,106.67846),
+             L.latLng(e.latlng.lat, e.latlng.lng)
+         ]
+     }).on('routesfound', function (e) {
+         var routes = e.routes;
+         console.log(routes);
+
+         e.routes[0].coordinates.forEach(function (coord, index) {
+             setTimeout(function () {
+                 marker.setLatLng([coord.lat, coord.lng]);
+             }, 100 * index)
+         })
+
+     }).addTo(map);
+ });    
      </script>
      
 </body>
