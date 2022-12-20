@@ -115,31 +115,32 @@ mylayer.addTo(map);
 //GPS location
 L.control.locate().addTo(map);
 //searching bar
-var markersLayer = new L.LayerGroup();	//layer contain searched elements
+//var markersLayer = new L.LayerGroup();	//layer contain searched elements
 	
-	map.addLayer(markersLayer);
+	//map.addLayer(markersLayer);
 
 	var controlSearch = new L.Control.Search({
 		position:'topright',		
-		layer: markersLayer,
+		layer: mylayer,
 		initial: false,
 		zoom: 12,
 		marker: false,
-               
+          propertyName:'streetadd',
+          zoom:100
 	});
 
 	map.addControl( controlSearch );
 
-	////////////populate map with markers from sample data
-	//for(i in data) {
-	//	var title = data[i].streetadd,	//value searched
-	//		loc = data[i].coordinates,		//position found
-	//		marker = new L.Marker(new L.latLng(loc), {title: title} );//se property searched
-	//	marker.bindPopup(title);
-	//	markersLayer.addLayer(marker);
-	//}
+	/* ////////////populate map with markers from sample data
+	for(i in data) {
+		var title = data[i].features.properties.streetadd,	//value searched
+			loc = data[i].features.properties.coordinates;		//position found
+			marker = new L.Marker(new L.latLng(loc), {title: title} );//se property searched
+	     marker.bindPopup(title);
+		markersLayer.addLayer(marker);
+	} */
  //machine routing
- map.on('click', function (e) {
+ /*map.on('click', function (e) {
      console.log(e)
      var newMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
      L.Routing.control({
@@ -151,14 +152,14 @@ var markersLayer = new L.LayerGroup();	//layer contain searched elements
          var routes = e.routes;
          console.log(routes);
 
-         e.routes[0].coordinates.forEach(function (coord, index) {
-             setTimeout(function () {
-                 marker.setLatLng([coord.lat, coord.lng]);
-             }, 100 * index)
-         })
+         //e.routes[0].coordinates.forEach(function (coord, index) {
+         //    setTimeout(function () {
+         //        marker.setLatLng([coord.lat, coord.lng]);
+          //   }, 100 * index)
+         //})
 
      }).addTo(map);
- });    
+ });    */
      </script>
      
 </body>
