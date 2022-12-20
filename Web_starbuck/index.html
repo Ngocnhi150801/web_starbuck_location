@@ -29,7 +29,13 @@
      <div id="map">
           <link rel="stylesheet" href="style.css">  
      </div>
-     
+     <div class="jumbotron">
+          <div class="container-fluid">
+              <h1>STARBUCKS LOCATION</h1>
+          </div>
+  
+      </div>
+
      <script>
      var map = L.map('map').setView([10.828861044439156, 106.67047111516476], 8);
      L.tileLayer('https://api.maptiler.com/maps/topo-v2/{z}/{x}/{y}.png?key=tJzZyi577rhl0qgkeERk', 
@@ -114,7 +120,8 @@ var markersLayer = new L.LayerGroup();	//layer contain searched elements
 		layer: markersLayer,
 		initial: false,
 		zoom: 12,
-		marker: false
+		marker: false,
+               
 	});
 
 	map.addControl( controlSearch );

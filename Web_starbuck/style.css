@@ -32,3 +32,6 @@
     color: black;
   }
   
+  .leaflet-control-search .search-button{
+    background: url(https://opengeo.tech/maps/leaflet-search/images/search-icon.png) no-repeat 4px 4px #fff;
+  }
