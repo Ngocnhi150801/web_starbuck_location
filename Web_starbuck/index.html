@@ -104,7 +104,7 @@ let myLayerOptions = {
 
 var mylayer= L.geoJson(data,{
      onEachFeature: function (feature, layer) {
-         layer.bindPopup(feature.properties.streetadd + "<br>"  +"<center><button onclick='goHere(feature.properties.latitude,feature.properties.longitude)'>Go Here</button></center>");
+         layer.bindPopup(feature.properties.streetadd /*+ "<br>"  +"<center><button onclick='goHere(feature.properties.latitude,feature.properties.longitude)'>Go Here</button></center>"*/);
      },
      pointToLayer: createCustomIcon
      })
@@ -114,6 +114,11 @@ mylayer.addTo(map);
 
 //GPS location
 L.control.locate().addTo(map);
+//mouse coordinates
+map.on('click', function(ev){
+    var latlng = map.mouseEventToLatLng(ev.originalEvent);
+    console.log(latlng.lat + ', ' + latlng.lng);
+  });
 //searching bar Leaflet Control Search
      var controlSearch = new L.Control.Search({
 		position:'topright',		
@@ -153,7 +158,8 @@ L.control.locate().addTo(map);
  /*-------------------------------------------------------------------------------------------*/
  var control = L.Routing.control({
      waypoints: [
-         L.latLng(10.76719,106.67846),
+         //L.latLng(latlng.lat,latlng.lng),
+         L.latLng(10.767138187766804,106.67773366554007),
          L.latLng(10.78, 106.7)
      ],
      routeWhileDragging: true
