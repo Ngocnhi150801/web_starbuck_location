@@ -104,7 +104,7 @@ let myLayerOptions = {
 
 var mylayer= L.geoJson(data,{
      onEachFeature: function (feature, layer) {
-         layer.bindPopup(feature.properties.streetadd);
+         layer.bindPopup(feature.properties.streetadd + "<br>"  +"<center><button onclick='goHere(feature.properties.latitude,feature.properties.longitude)'>Go Here</button></center>");
      },
      pointToLayer: createCustomIcon
      })
@@ -151,15 +151,24 @@ L.control.locate().addTo(map);
      });*/
 
  /*-------------------------------------------------------------------------------------------*/
- /*L.Routing.control({
+ var control = L.Routing.control({
      waypoints: [
          L.latLng(10.76719,106.67846),
          L.latLng(10.78, 106.7)
      ],
-     routeWhileDragging: true,
+     routeWhileDragging: true
+ })
+ control.addTo(map);
 
- }).addTo(map);*/
- function createButton(label, container) {
+ function goHere(lat,lng)
+ {
+    var latLng = L.latLng(lat,lng);
+    control.spliceWaypoints(control.getWaypoints().length - 1, 1, latLng);
+ }
+ 
+ 
+ 
+ /*function createButton(label, container) {
      var btn = L.DomUtil.create('button', '', container);
      btn.setAttribute('type', 'button');
      btn.innerHTML = label;
@@ -176,16 +185,35 @@ L.control.locate().addTo(map);
          .setLatLng(e.latlng)
          .openOn(map);
 
+
          L.DomEvent.on(startBtn, 'click', function() {
-          control.spliceWaypoints(0, 1, e.latlng);
-          map1.closePopup();
-      });
-      L.DomEvent.on(destBtn, 'click', function() {
-          control.spliceWaypoints(control.getWaypoints().length - 1, 1, e.latlng);
-          map1.closePopup();
-      });
+            control.spliceWaypoints(0, 1, e.latlng);
+            map1.closePopup();
+        });
+        L.DomEvent.on(destBtn, 'click', function() {
+            control.spliceWaypoints(control.getWaypoints().length - 1, 1, e.latlng);
+            map1.closePopup();
+        });
+
  });
- 
+ var ReversablePlan = L.Routing.Plan.extend({
+    createGeocoders: function() {
+        var container = L.Routing.Plan.prototype.createGeocoders.call(this),
+            reverseButton = createButton('↑↓', container);
+        return container;
+    }
+})
+var plan = new ReversablePlan([
+        L.latLng(57.74, 11.94),
+        L.latLng(57.6792, 11.949)
+    ], {
+        geocoder: L.Control.Geocoder.nominatim(),
+        routeWhileDragging: true
+    }),
+    control = L.Routing.control({
+        routeWhileDragging: true,
+        plan: plan
+    }).addTo(map1);*/
 
      </script>
      
